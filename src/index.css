@@ -1,5 +1,15 @@
-/* *, *::before, *::after {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} */
+}
+
+@font-face {
+  font-family: BoldHead;
+  src: url("../public/fonts/Boldhead.otf");
+}
+
+.logo {
+  font-size: 30px;
+  font-family: BoldHead;
+}

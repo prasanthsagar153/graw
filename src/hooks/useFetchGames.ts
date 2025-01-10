@@ -24,15 +24,20 @@ export interface IFetchGameResponse {
 export default function useFetchGames() {
   const [games, setGames] = useState<IGame[]>([]);
   const [error, setError] = useState('');
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   
   useEffect(() => {
     const controller = new AbortController();
+    setLoading(true);
     apiClient.get<IFetchGameResponse>("/games", { signal: controller.signal })
-      .then(res => setGames(res.data.results))
+      .then(res => {
+        setGames(res.data.results);
+        setLoading(false);
+      })
       .catch(err => {
         if(err instanceof CanceledError) return;
         setError(err.message);
+        setLoading(false);
       })
 
     return () => {
@@ -40,5 +45,5 @@ export default function useFetchGames() {
     }
   }, []);
   
-  return { games, error };
+  return { games, error, loading };
 }

@@ -1,5 +1,5 @@
+import { IGameQuery } from "@/App";
 import useFetchData from "./useFetchData";
-import { IGenre } from "./useFetchGenres";
 import { IPlatform } from "./useFetchPlatforms";
 
 export interface IGame {
@@ -10,12 +10,13 @@ export interface IGame {
   metacritic: number;
 }
 
-export default function useFetchGames(selectedGenre: IGenre | null, selectedPlatform: IPlatform | null) {
+export default function useFetchGames(gameQuery: IGameQuery) {
   const { data: games, error, loading } = useFetchData<IGame>("/games", {
     params: {
-      genres: selectedGenre?.id,
-      platforms: selectedPlatform?.id
+      genres: gameQuery.genre?.id,
+      platforms: gameQuery.platform?.id
     },
-  }, [selectedGenre?.id, selectedPlatform?.id]);
+  }, [gameQuery]);
+  // }, [gameQuery.genre?.id, gameQuery.platform?.id]);
   return { games, error, loading };
 };

@@ -12,8 +12,6 @@ export default function useFetchData <T>(endpoint: string, requestConfig?: Axios
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  console.log('RC ', requestConfig);
-
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);

@@ -1,11 +1,6 @@
 import useFetchData from "./useFetchData";
 import { IGenre } from "./useFetchGenres";
-
-export interface IPlatform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { IPlatform } from "./useFetchPlatforms";
 
 export interface IGame {
   id: number;
@@ -15,7 +10,12 @@ export interface IGame {
   metacritic: number;
 }
 
-export default function useFetchGames(selectedGenre: IGenre | null) {
-  const { data: games, error, loading } = useFetchData<IGame>("/games", { params: { genres: selectedGenre?.id }}, [selectedGenre?.id]);
+export default function useFetchGames(selectedGenre: IGenre | null, selectedPlatform: IPlatform | null) {
+  const { data: games, error, loading } = useFetchData<IGame>("/games", {
+    params: {
+      genres: selectedGenre?.id,
+      platforms: selectedPlatform?.id
+    },
+  }, [selectedGenre?.id, selectedPlatform?.id]);
   return { games, error, loading };
-}
+};

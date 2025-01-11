@@ -14,7 +14,8 @@ export default function useFetchGames(gameQuery: IGameQuery) {
   const { data: games, error, loading } = useFetchData<IGame>("/games", {
     params: {
       genres: gameQuery.genre?.id,
-      platforms: gameQuery.platform?.id
+      platforms: gameQuery.platform?.id,
+      ordering: gameQuery.sortOrder 
     },
   }, [gameQuery]);
   // }, [gameQuery.genre?.id, gameQuery.platform?.id]);

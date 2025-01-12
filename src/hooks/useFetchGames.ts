@@ -15,7 +15,8 @@ export default function useFetchGames(gameQuery: IGameQuery) {
     params: {
       genres: gameQuery.genre?.id,
       platforms: gameQuery.platform?.id,
-      ordering: gameQuery.sortOrder 
+      ordering: gameQuery.sortOrder,
+      search: gameQuery.searchText
     },
   }, [gameQuery]);
   // }, [gameQuery.genre?.id, gameQuery.platform?.id, gameQuery?.sortOrder]);

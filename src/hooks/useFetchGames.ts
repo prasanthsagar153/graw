@@ -18,6 +18,6 @@ export default function useFetchGames(gameQuery: IGameQuery) {
       ordering: gameQuery.sortOrder 
     },
   }, [gameQuery]);
-  // }, [gameQuery.genre?.id, gameQuery.platform?.id]);
+  // }, [gameQuery.genre?.id, gameQuery.platform?.id, gameQuery?.sortOrder]);
   return { games, error, loading };
 };

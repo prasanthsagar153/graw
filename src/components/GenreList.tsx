@@ -1,6 +1,6 @@
 import useFetchGenres, { IGenre } from "@/hooks/useFetchGenres";
 import { getCroppedImageUrl } from "@/services/utils";
-import { HStack, List, ListItem, Image, Spinner, Button } from "@chakra-ui/react";
+import { HStack, List, ListItem, Image, Spinner, Button, Heading } from "@chakra-ui/react";
 
 interface Props {
   onSelectGenre: (genre: IGenre) => void;
@@ -13,14 +13,15 @@ function GenreList({ onSelectGenre, selectedGenre }: Props) {
   if(error) return null;
   return (
     <>
+      <Heading fontSize="2xl" marginBottom={3}>Genres</Heading>
       <List>
         {
           genres.map(g => {
             return (
               <ListItem key={g.id} paddingY="5px">
                 <HStack>
-                  <Image boxSize="32px" borderRadius={8} src={getCroppedImageUrl(g.image_background)} />
-                  <Button fontSize="lg" variant="link" onClick={() => onSelectGenre(g)} fontWeight={g.id === selectedGenre?.id ? "bold" : "normal"}>{g.name}</Button>
+                  <Image boxSize="32px" borderRadius={8} objectFit="cover" src={getCroppedImageUrl(g.image_background)} />
+                  <Button whiteSpace="normal" textAlign="left" fontSize="lg" variant="link" onClick={() => onSelectGenre(g)} fontWeight={g.id === selectedGenre?.id ? "bold" : "normal"}>{g.name}</Button>
                 </HStack>
               </ListItem>
             )

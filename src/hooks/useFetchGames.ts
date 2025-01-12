@@ -8,6 +8,7 @@ export interface IGame {
   background_image: string;
   parent_platforms: { platform: IPlatform }[];
   metacritic: number;
+  rating_top: number;
 }
 
 export default function useFetchGames(gameQuery: IGameQuery) {

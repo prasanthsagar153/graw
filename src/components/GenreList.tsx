@@ -8,15 +8,15 @@ interface Props {
 }
 
 function GenreList({ onSelectGenre, selectedGenre }: Props) {
-  const { data: genres, loading, error } = useFetchGenres();
-  if(loading) return <Spinner />
+  const { data, isLoading, error } = useFetchGenres();
+  if(isLoading) return <Spinner />
   if(error) return null;
   return (
     <>
       <Heading fontSize="2xl" marginBottom={3}>Genres</Heading>
       <List>
         {
-          genres.map(g => {
+          data?.results && data?.results.map((g: IGenre) => {
             return (
               <ListItem key={g.id} paddingY="5px">
                 <HStack>

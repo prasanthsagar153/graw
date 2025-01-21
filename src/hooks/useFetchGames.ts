@@ -1,6 +1,6 @@
 import { IGameQuery } from "@/App";
 import APIClient, { IFetchResponse } from "@/services/api-client";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { IPlatform } from "./useFetchPlatforms";
 
 export interface IGame {
@@ -10,6 +10,7 @@ export interface IGame {
   parent_platforms: { platform: IPlatform }[];
   metacritic: number;
   rating_top: number;
+  page?: number;
 }
 
 const createGameConfiguration = (gameQuery: IGameQuery) => {
@@ -25,11 +26,20 @@ const createGameConfiguration = (gameQuery: IGameQuery) => {
 
 const useFetchGames = (gameQuery: IGameQuery) => {
   const gameConfiguration = createGameConfiguration(gameQuery);
-  const fetchGames = new APIClient<IGame>("/games").getAll(gameConfiguration);
   
-  return useQuery<IFetchResponse<IGame>, Error>({
+  const fetchGames = (pageParam: number) =>
+    new APIClient<IGame>("/games").getAll({
+      ...gameConfiguration,
+      params: {...gameConfiguration.params, page: pageParam}
+    }
+  );
+  
+  return useInfiniteQuery<IFetchResponse<IGame>, Error>({
     queryKey: ["games", gameQuery],
-    queryFn: () => fetchGames,
+    queryFn: ({ pageParam = 1 }) => fetchGames(pageParam),
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    }
   });
 };
 

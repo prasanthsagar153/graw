@@ -39,7 +39,8 @@ const useFetchGames = (gameQuery: IGameQuery) => {
     queryFn: ({ pageParam = 1 }) => fetchGames(pageParam),
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
-    }
+    },
+    staleTime: 24 * 60 * 60 * 1000,
   });
 };
 

@@ -8,7 +8,9 @@ interface Props {
 }
 
 function  PlatformSelector({ selectedPlatform, onSelectPlatform }: Props) {
-  const { data: platforms, error } = useFetchPlatforms();
+  const { data, error } = useFetchPlatforms();
+  const platforms = data?.results;
+
   if(error) return null;
 
   return (

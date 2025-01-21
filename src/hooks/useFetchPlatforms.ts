@@ -1,4 +1,4 @@
-import apiClient, { IFetchResponse } from "@/services/api-client";
+import APIClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 
 export interface IPlatform {
@@ -7,9 +7,7 @@ export interface IPlatform {
   slug: string;
 }
 
-async function fetchPlatforms(): Promise<IFetchResponse<IPlatform>> {
-  return (await apiClient.get<IFetchResponse<IPlatform>>("/platforms/lists/parents")).data;
-}
+const fetchPlatforms = new APIClient<IPlatform>("/platforms/lists/parents").getAll;
 
 const useFetchPlatforms = () => {
   return useQuery<{results: IPlatform[]}, Error>({

@@ -16,7 +16,7 @@ export interface IGame {
 const createGameConfiguration = (gameQuery: IGameQuery) => {
   return {
     params: {
-      genres: gameQuery.genre?.id,
+      genres: gameQuery.genreId,
       parent_platforms: gameQuery.platform?.id,
       ordering: gameQuery.sortOrder,
       search: gameQuery.searchText

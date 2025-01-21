@@ -1,6 +1,4 @@
-// import useFetchData from "./useFetchData";
-import apiClient from "@/services/api-client";
-import { IFetchResponse } from "./useFetchData";
+import apiClient, { IFetchResponse } from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 
 export interface IPlatform {
@@ -8,10 +6,6 @@ export interface IPlatform {
   name: string;
   slug: string;
 }
-
-// export default function useFetchPlatforms () {
-//   return useFetchData<IPlatform>("platforms/lists/parents");
-// }
 
 async function fetchPlatforms(): Promise<IFetchResponse<IPlatform>> {
   return (await apiClient.get<IFetchResponse<IPlatform>>("/platforms/lists/parents")).data;

@@ -1,16 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import apiClient from "@/services/api-client";
-import { IFetchResponse } from "./useFetchData";
+import apiClient, { IFetchResponse } from "@/services/api-client";
 
 export interface IGenre {
   id: number;
   name: string;
   image_background: string;
 }
-
-// export default function useFetchGenres () {
-//   return useFetchData<IGenre>("/genres");
-// };
 
 async function fetchGenres(): Promise<IFetchResponse<IGenre>> {
   return (await apiClient.get<IFetchResponse<IGenre>>("/genres")).data;

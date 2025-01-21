@@ -1,6 +1,8 @@
 import { IGameQuery } from "@/App";
-import useFetchData from "./useFetchData";
+import apiClient, { IFetchResponse } from "@/services/api-client";
+import { useQuery } from "@tanstack/react-query";
 import { IPlatform } from "./useFetchPlatforms";
+
 
 export interface IGame {
   id: number;
@@ -11,15 +13,23 @@ export interface IGame {
   rating_top: number;
 }
 
-export default function useFetchGames(gameQuery: IGameQuery) {
-  const { data: games, error, loading } = useFetchData<IGame>("/games", {
+async function fetchGames(gameQuery: IGameQuery): Promise<IFetchResponse<IGame>> {
+  return (await apiClient.get<IFetchResponse<IGame>>("/games", {
     params: {
       genres: gameQuery.genre?.id,
-      platforms: gameQuery.platform?.id,
+      parent_platforms: gameQuery.platform?.id,
       ordering: gameQuery.sortOrder,
       search: gameQuery.searchText
     },
-  }, [gameQuery]);
-  // }, [gameQuery.genre?.id, gameQuery.platform?.id, gameQuery?.sortOrder]);
-  return { games, error, loading };
+  })).data;
+}
+
+const useFetchGames = (gameQuery: IGameQuery) => {
+  return useQuery<IFetchResponse<IGame>, Error>({
+    queryKey: ["games", gameQuery],
+    queryFn: () => fetchGames(gameQuery),
+    
+  });
 };
+
+export default useFetchGames;

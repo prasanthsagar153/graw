@@ -1,18 +1,16 @@
 import { IGameQuery } from "@/App";
-import useFetchGenres from "@/hooks/useFetchGenres";
-import useFetchPlatforms from "@/hooks/useFetchPlatforms";
 import { Heading } from "@chakra-ui/react";
+import usePlatform from "@/hooks/usePlatform";
+import useGenre from "@/hooks/useGenre";
 
 interface Props {
   gameQuery: IGameQuery;
 }
 
 function GameHeading({ gameQuery }: Props) {
-  const { data: genres } = useFetchGenres();
-  const { data: platforms } = useFetchPlatforms();
 
-  const genre = genres?.results.find(g => g.id === gameQuery.genreId);
-  const platform = platforms?.results.find(p => p.id === gameQuery.platformId);
+  const genre = useGenre(gameQuery.genreId);
+  const platform = usePlatform(gameQuery.platformId);
 
   let heading = `${platform?.name || ''} ${genre?.name || ''} Games`;
 

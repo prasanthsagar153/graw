@@ -1,4 +1,5 @@
 import useFetchPlatforms, { IPlatform } from "@/hooks/useFetchPlatforms";
+import usePlatform from "@/hooks/usePlatform";
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -10,7 +11,7 @@ interface Props {
 function  PlatformSelector({ selectedPlatformId, onSelectPlatform }: Props) {
   const { data, error } = useFetchPlatforms();
   const platforms = data?.results;
-  const selectedPlatform = platforms?.find(p => p.id === selectedPlatformId);
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   if(error) return null;
 

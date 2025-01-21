@@ -1,5 +1,6 @@
 import { IGameQuery } from "@/App";
 import useFetchGenres from "@/hooks/useFetchGenres";
+import useFetchPlatforms from "@/hooks/useFetchPlatforms";
 import { Heading } from "@chakra-ui/react";
 
 interface Props {
@@ -8,8 +9,12 @@ interface Props {
 
 function GameHeading({ gameQuery }: Props) {
   const { data: genres } = useFetchGenres();
-  const genre = genres?.results.find(g => g.id === gameQuery.genreId)
-  let heading = `${gameQuery.platform?.name || ''} ${genre?.name || ''} Games`;
+  const { data: platforms } = useFetchPlatforms();
+
+  const genre = genres?.results.find(g => g.id === gameQuery.genreId);
+  const platform = platforms?.results.find(p => p.id === gameQuery.platformId);
+
+  let heading = `${platform?.name || ''} ${genre?.name || ''} Games`;
 
   return (
     <>

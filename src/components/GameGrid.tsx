@@ -1,6 +1,6 @@
 import React from "react";
 import useFetchGames from "@/hooks/useFetchGames";
-import { Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import GameCardSkeleton from './GameCardSkeleton';
 import GameCardContainer from "./GameCardContainer";
@@ -16,7 +16,6 @@ function GameGrid({ gameQuery }: Props) {
     data,
     error,
     isLoading,
-    isFetchingNextPage,
     fetchNextPage,
     hasNextPage
   } = useFetchGames(gameQuery);
@@ -63,14 +62,6 @@ function GameGrid({ gameQuery }: Props) {
           }
         </SimpleGrid>
       </InfiniteScroll>
-
-      {/* {
-        hasNextPage && (
-          <Button onClick={() => fetchNextPage()} marginY={5}>
-            { isFetchingNextPage ? "Loading..." : "Load More" }
-          </Button>
-        )
-      } */}
     </>
   )
 }

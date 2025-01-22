@@ -1,7 +1,7 @@
-import { IGameQuery } from "@/App";
 import APIClient, { IFetchResponse } from "@/services/api-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { IPlatform } from "./useFetchPlatforms";
+import useGameQueryStore, { IGameQuery } from "@/store";
 
 export interface IGame {
   id: number;
@@ -24,7 +24,8 @@ const createGameConfiguration = (gameQuery: IGameQuery) => {
   }
 };
 
-const useFetchGames = (gameQuery: IGameQuery) => {
+const useFetchGames = () => {
+  const gameQuery = useGameQueryStore(s => s.gameQuery);
   const gameConfiguration = createGameConfiguration(gameQuery);
   
   const fetchGames = (pageParam: number) =>

@@ -15,7 +15,7 @@ function GameTrailer({ gameId }: Props) {
   
   return data ? (
     <>
-      <Box padding={10}>
+      <Box marginBottom={5}>
         <video
           src={trailer?.results[0]?.data["max"]}
           poster={data.preview}

@@ -2,6 +2,12 @@ import APIClient, { IFetchResponse } from "@/services/api-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { IPlatform } from "./useFetchPlatforms";
 import useGameQueryStore, { IGameQuery } from "@/store";
+import { IGenre } from "./useFetchGenres";
+
+export interface IPublisher {
+  id: string;
+  name: string;
+}
 
 export interface IGame {
   id: number;
@@ -13,6 +19,8 @@ export interface IGame {
   page?: number;
   slug: string;
   description_raw: string;
+  genres: IGenre[],
+  publishers: IPublisher[]
 }
 
 const createGameConfiguration = (gameQuery: IGameQuery) => {

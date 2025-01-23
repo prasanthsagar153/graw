@@ -16,7 +16,8 @@ const fetchTrailer = (gameId: number) => new APIClient<ITrailer>(`/games/${gameI
 const useFetchTrailer = (gameId: number) => {
   return useQuery({
     queryKey: ["trailer", gameId],
-    queryFn: fetchTrailer(gameId)
+    queryFn: fetchTrailer(gameId),
+    staleTime: 24 * 60 * 60 * 1000
   });
 }
 

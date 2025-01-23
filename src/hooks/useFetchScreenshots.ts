@@ -13,7 +13,8 @@ const fetchScreenshots = (gameId: number) => new APIClient<IScreenshot>(`/games/
 const useFetchScreenshots = (gameId: number) => {
   return useQuery({
     queryKey: ["screenshots", gameId],
-    queryFn: fetchScreenshots(gameId)
+    queryFn: fetchScreenshots(gameId),
+    staleTime: 24 * 60 * 60 * 1000
   });
 }
 

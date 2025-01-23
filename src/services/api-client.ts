@@ -22,7 +22,12 @@ class APIClient<T> {
 
   getAll = async (config: AxiosRequestConfig) => {
     return (await axiosInstance.get<IFetchResponse<T>>(this.endpoint, config)).data;
-  } 
+  }
+
+  get = async (id: string | number) => {
+    return (await axiosInstance.get<T>(`${this.endpoint}/${id}`)).data;
+  }
+
 }
 
 export default APIClient;

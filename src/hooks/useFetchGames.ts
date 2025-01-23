@@ -11,6 +11,8 @@ export interface IGame {
   metacritic: number;
   rating_top: number;
   page?: number;
+  slug: string;
+  description_raw: string;
 }
 
 const createGameConfiguration = (gameQuery: IGameQuery) => {

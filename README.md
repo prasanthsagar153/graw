@@ -2,7 +2,7 @@
 
 Graw is a modern web gaming application built using **React**, **TypeScript** and **React Router**. It features a fast and scalable architecture, leveraging tools like **Chakra UI**, **Zustand**, and **TanStack Query** for state management and styling.
 
-The Design is inspired from [Rawg](https://rawg.io/) and have utilized [Rawg's API]('https://rawg.io/apidocs) for all the data.
+The Design is inspired from [Rawg](https://rawg.io/) and have utilized Rawg's [API]('https://rawg.io/apidocs) for all the data.
 
 ## Project URL
  - https://graw.vercel.app/

@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# GRAW 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Graw is a modern web gaming application built using **React**, **TypeScript** and **React Router**. It features a fast and scalable architecture, leveraging tools like **Chakra UI**, **Zustand**, and **TanStack Query** for state management and styling.
 
-Currently, two official plugins are available:
+The Design is inspired from [Rawg](https://rawg.io/) and have utilized [Rawg's API]('https://rawg.io/apidocs) for all the data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features  
 
-## Expanding the ESLint configuration
+- **View All Games**: View all the games. Infite scroll is added to for efficient viewing of the content
+- **View a single game**: Get a detailed page for a single game
+- **Responsive Design**: Styled with Chakra UI for a seamless experience on all devices.
+- **Theme Switcher**: Easily switch between light and dark mode
+- **Other features**: The app has been developed using modern frontend technologies and utilizes routing, infinite scrolling and an efficient data fetching system.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- **Frontend**:
+  - [React](https://reactjs.org/) - Component-based UI library.
+  - [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript.
+  - [Vite](https://vitejs.dev/) - Fast build tool with hot module replacement.
+  - [Chakra UI](https://chakra-ui.com/) - Modern UI component library.
+  - [React Router](https://reactrouter.com/) - Routing and navigation.
+  - [TanStack Query](https://tanstack.com/query) - Data-fetching library.
+  - [Zustand](https://zustand.pmnd.rs/) - Lightweight state management.
+  - [Axios](https://axios-http.com/) - HTTP client.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Project Images
+  ![alt text](http://)
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation  
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Follow these steps to set up the application on your local machine:  
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Prerequisites  
+
+- Node.js (>=16.0.0)  
+- npm or yarn  
+
+### Clone the Repository  
+
+```bash  
+git clone https://github.com/prasanthsagar153/expense-calculator.git  
+cd graw
+npm install

@@ -7,10 +7,11 @@ The Design is inspired from [Rawg](https://rawg.io/) and have utilized [Rawg's A
 ## Features  
 
 - **View All Games**: View all the games. Infite scroll is added to for efficient viewing of the content
+- **Filter Games**: Filter games based on Genres and Platform
 - **View a single game**: Get a detailed page for a single game
 - **Responsive Design**: Styled with Chakra UI for a seamless experience on all devices.
 - **Theme Switcher**: Easily switch between light and dark mode
-- **Other features**: The app has been developed using modern frontend technologies and utilizes routing, infinite scrolling and an efficient data fetching system.
+- **Technical features**: The app has been developed using modern frontend technologies and utilizes routing, infinite scrolling and an efficient data fetching system. Utilized Tanstack Query for efficient caching mechanisms.
 
 ## Technologies Used
 

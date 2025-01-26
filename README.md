@@ -4,6 +4,9 @@ Graw is a modern web gaming application built using **React**, **TypeScript** an
 
 The Design is inspired from [Rawg](https://rawg.io/) and have utilized [Rawg's API]('https://rawg.io/apidocs) for all the data.
 
+## Project URL
+ - https://graw.vercel.app/
+
 ## Features  
 
 - **View All Games**: View all the games. Infite scroll is added to for efficient viewing of the content
@@ -24,9 +27,6 @@ The Design is inspired from [Rawg](https://rawg.io/) and have utilized [Rawg's A
   - [TanStack Query](https://tanstack.com/query) - Data-fetching library.
   - [Zustand](https://zustand.pmnd.rs/) - Lightweight state management.
   - [Axios](https://axios-http.com/) - HTTP client.
-
-## Project URL
- - https://graw.vercel.app/
 
 ## Project Images
   ![All games](https://github.com/prasanthsagar153/graw/blob/master/src/assets/projectImages/allGames.png)

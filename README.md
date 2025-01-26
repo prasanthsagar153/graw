@@ -27,6 +27,7 @@ The Design is inspired from [Rawg](https://rawg.io/) and have utilized [Rawg's A
 
 ## Project Images
   ![All games](https://github.com/prasanthsagar153/graw/blob/master/src/assets/projectImages/allGames.png)
+  \
   ![Simgle game](https://github.com/prasanthsagar153/graw/blob/master/src/assets/projectImages/singleGame.png)
 
 ## Installation  
